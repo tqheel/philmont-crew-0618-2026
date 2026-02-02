@@ -185,7 +185,7 @@ function updateTOC(sections) {
 /**
  * Navigate to a specific section
  */
-function navigateToSection(index) {
+function navigateToSection(index, pushToHistory = true) {
     const sections = state.sections[state.currentDoc];
     if (!sections || index < 0 || index >= sections.length) return;
     
@@ -211,7 +211,12 @@ function navigateToSection(index) {
     window.scrollTo(0, 0);
     
     // Update URL hash
-    window.history.replaceState(null, '', `#${state.currentDoc}/${index}`);
+    const hash = `#${state.currentDoc}/${index}`;
+    if (pushToHistory) {
+        window.history.pushState(null, '', hash);
+    } else {
+        window.history.replaceState(null, '', hash);
+    }
 }
 
 /**
@@ -435,7 +440,7 @@ function handleHashChange() {
     if (docKey && CONFIG.documents[docKey]) {
         switchDocument(docKey).then(() => {
             if (sectionIndex !== undefined) {
-                navigateToSection(parseInt(sectionIndex, 10));
+                navigateToSection(parseInt(sectionIndex, 10), false);
             }
         });
     } else if (docKey === 'home') {
