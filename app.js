@@ -23,6 +23,11 @@ const CONFIG = {
             path: 'Parents-Guide/Parents-Guide.md',
             imageBase: 'Parents-Guide/',
             title: "Parent's Peace of Mind Guide"
+        },
+        'training-guide': {
+            path: 'Training-Fitness-Guide/Training-Fitness-Guide.md',
+            imageBase: 'Training-Fitness-Guide/',
+            title: 'Training & Fitness Guide'
         }
     }
 };
@@ -344,6 +349,12 @@ function renderHomePage() {
                 <img src="trail-image.png" alt="Parent's Guide" class="home-card-image">
                 <h3 class="home-card-title">Parent's Peace of Mind Guide</h3>
                 <p class="home-card-description">A reassuring guide for parents covering safety protocols, staff training, medical support, and emergency procedures.</p>
+            </div>
+            
+            <div class="home-card" onclick="switchDocument('training-guide')">
+                <img src="trail-image.png" alt="Training & Fitness Guide" class="home-card-image">
+                <h3 class="home-card-title">Training & Fitness Guide</h3>
+                <p class="home-card-description">Comprehensive fitness programs for youth and adults with multiple training paths, exercise demonstrations, and a 6-month preparation timeline.</p>
             </div>
         </div>
     `;

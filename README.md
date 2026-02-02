@@ -7,6 +7,7 @@ Single-page web app that turns Philmont planning guides into a navigable reading
 - Advisor’s Guidebook (Markdown + images)
 - Guidebook to Adventure (Markdown + images)
 - Parent’s Peace of Mind Guide (Markdown + images)
+- Training & Fitness Guide (Markdown) - Comprehensive 6-month training program
 - Static SPA with a Philmont-inspired design system
 
 ## Project Structure
@@ -16,7 +17,7 @@ Single-page web app that turns Philmont planning guides into a navigable reading
 - styles.css: Full UI styling
 - start_server.sh: Local static server helper
 - update_guidebook_toc.py: Script that renames “Page #” headings in the Guidebook to Adventure
-- 2025-*/ and Parents-Guide/: Markdown content and images
+- 2025-*/, Parents-Guide/, and Training-Fitness-Guide/: Markdown content and images
 - *.pdf: Original source PDFs
 
 ## Run Locally
