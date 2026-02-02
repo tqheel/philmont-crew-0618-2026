@@ -335,7 +335,7 @@ function renderHomePage() {
             </div>
             
             <div class="home-card" onclick="switchDocument('guidebook')">
-                <img src="trail-image.png" alt="Guidebook to Adventure" class="home-card-image">
+                <img src="parents-image.jpg" alt="Guidebook to Adventure" class="home-card-image">
                 <h3 class="home-card-title">Guidebook to Adventure</h3>
                 <p class="home-card-description">Complete guide for all participants covering equipment, hiking skills, camping procedures, program features, and more.</p>
             </div>

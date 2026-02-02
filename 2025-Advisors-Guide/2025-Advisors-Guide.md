@@ -81,7 +81,7 @@ hazards, so every participant should understand Philmont’s Risk Advisory, whic
 Annual Health and Medical Record.
 
 
-###### Refer to: https://www.philmontscoutranch.org/philmonttreks/trekrequirements/risks/.
+###### Refer to: https://www.philmontscoutranch.org/resources/preparing-for-philmont/risk-advisory/.
 
 
 Philmont places emphasis on physical preparation including a detailed Annual Health and Medical Record. Crews should

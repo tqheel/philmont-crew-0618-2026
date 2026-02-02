@@ -58,3 +58,18 @@ While cell service is spotty to non-existent (which is part of the experience!),
 ## Conclusion
 
 A Philmont trek is a challenge—that is the point! It builds character, resilience, and leadership. But it is a challenge undertaken within a safety net of training, professional support, and medical preparedness. Your Scout is in good hands—their own, their leaders', and the dedicated staff of Philmont Scout Ranch.
+
+## For More Information
+
+To read the official details and policies, please visit the following resources:
+
+### Comprehensive Health & Safety Overview
+*   **[Philmont Health, Safety & Risk Management](https://www.philmontscoutranch.org/resources/preparing-for-philmont/health-safety-risk-management/)**: This page provides a comprehensive overview of Philmont's approach to health, safety, and risk management.
+
+### Specific Safety Documents
+*   **[Philmont Risk Advisory](https://www.philmontscoutranch.org/resources/preparing-for-philmont/risk-advisory/)**: The official document outlining specific risks and safety protocols.
+*   **[Annual Health & Medical Record](https://www.scouting.org/health-and-safety/ahmr/)**: Information on the medical forms and health requirements for all participants.
+*   **[Wilderness First Aid](https://www.scouting.org/health-and-safety/training/wilderness-first-aid/)**: Details on the training curriculum required for crew members.
+
+### General Resources
+*   **[Philmont Scout Ranch Official Site](https://www.philmontscoutranch.org/)**: The main hub for all ranch news and information.
