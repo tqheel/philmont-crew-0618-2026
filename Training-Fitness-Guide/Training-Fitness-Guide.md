@@ -841,7 +841,7 @@ Use a training log to stay accountable and monitor improvement.
 ## Exercise Video Libraries
 All exercise videos linked in this guide are from reputable fitness channels. Additional resources:
 - **Bowflex**: [YouTube Channel](https://www.youtube.com/@Bowflex)
-- **Athlean-X**: [YouTube Channel](https://www.youtube.com/@ataborz) - Science-based training
+- **Athlean-X**: [YouTube Channel](https://www.youtube.com/@athleanx) - Science-based training
 - **LIVESTRONG**: [YouTube Channel](https://www.youtube.com/@LIVESTRONG)
 - **Howcast Fitness**: [YouTube Channel](https://www.youtube.com/@howcast)
 
