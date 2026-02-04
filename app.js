@@ -160,7 +160,14 @@ function renderMarkdown(markdown, docKey) {
         gfm: true
     });
     
-    return marked.parse(fixedMarkdown);
+    let html = marked.parse(fixedMarkdown);
+    
+    // Add clickable workout links for training-guide
+    if (docKey === 'training-guide') {
+        html = html.replace(/\*\*core\*\*/gi, '<a href="#" class="workout-link" data-workout="beginner-core-workout" onclick="event.preventDefault(); openWorkoutModal(\'beginner-core-workout\')"><strong>Core</strong></a>');
+    }
+    
+    return html;
 }
 
 // ==========================================
@@ -393,6 +400,165 @@ function toggleSidebar() {
 }
 
 // ==========================================
+// Workout Modal Functions
+// ==========================================
+
+const workoutData = {
+    'beginner-core-workout': {
+        title: '30-Minute Beginner Home Core Routine',
+        sections: []
+    }
+};
+
+let currentWorkoutKey = null;
+let currentWorkoutStep = 0;
+
+/**
+ * Load workout content from markdown
+ */
+async function loadWorkoutContent(workoutKey) {
+    if (workoutData[workoutKey].sections.length > 0) {
+        return workoutData[workoutKey];
+    }
+    
+    try {
+        const response = await fetch(`Training-Fitness-Guide/${workoutKey}.md`);
+        if (!response.ok) throw new Error(`Failed to load ${workoutKey}`);
+        
+        const markdown = await response.text();
+        const sections = parseWorkoutSections(markdown);
+        workoutData[workoutKey].sections = sections;
+        
+        return workoutData[workoutKey];
+    } catch (error) {
+        console.error(`Error loading workout ${workoutKey}:`, error);
+        return null;
+    }
+}
+
+/**
+ * Parse workout markdown into steps (sections)
+ */
+function parseWorkoutSections(markdown) {
+    const lines = markdown.split('\n');
+    const sections = [];
+    let currentSection = null;
+    
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+        
+        // Match h2 or h3 headers for section breaks
+        const headerMatch = line.match(/^#{2,3}\s+(.+)$/);
+        
+        if (headerMatch) {
+            if (currentSection && currentSection.content.trim()) {
+                sections.push(currentSection);
+            }
+            
+            currentSection = {
+                title: headerMatch[1].trim(),
+                content: [line]
+            };
+        } else if (currentSection) {
+            currentSection.content.push(line);
+        }
+    }
+    
+    if (currentSection && currentSection.content.trim()) {
+        sections.push(currentSection);
+    }
+    
+    return sections;
+}
+
+/**
+ * Open workout modal
+ */
+async function openWorkoutModal(workoutKey) {
+    const modal = document.getElementById('workoutModal');
+    const workout = await loadWorkoutContent(workoutKey);
+    
+    if (!workout || !workout.sections || workout.sections.length === 0) {
+        console.error('Failed to load workout');
+        return;
+    }
+    
+    currentWorkoutKey = workoutKey;
+    currentWorkoutStep = 0;
+    
+    document.getElementById('modalTitle').textContent = workout.title;
+    
+    // Clear previous content
+    const modalBody = document.getElementById('modalBody');
+    modalBody.innerHTML = '';
+    
+    // Render all steps
+    workout.sections.forEach((section, index) => {
+        const stepDiv = document.createElement('div');
+        stepDiv.className = `workout-step ${index === 0 ? 'active' : ''}`;
+        stepDiv.id = `workout-step-${index}`;
+        
+        const html = renderMarkdown(section.content.join('\n'), 'training-guide');
+        stepDiv.innerHTML = html;
+        modalBody.appendChild(stepDiv);
+    });
+    
+    updateWorkoutNavButtons(workout.sections.length);
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+/**
+ * Close workout modal
+ */
+function closeWorkoutModal() {
+    const modal = document.getElementById('workoutModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+/**
+ * Navigate workout steps
+ */
+function navigateWorkoutStep(direction) {
+    const workout = workoutData[currentWorkoutKey];
+    if (!workout) return;
+    
+    const totalSteps = workout.sections.length;
+    const newStep = currentWorkoutStep + direction;
+    
+    if (newStep >= 0 && newStep < totalSteps) {
+        const currentStepEl = document.getElementById(`workout-step-${currentWorkoutStep}`);
+        if (currentStepEl) {
+            currentStepEl.classList.remove('active');
+        }
+        
+        currentWorkoutStep = newStep;
+        
+        const newStepEl = document.getElementById(`workout-step-${currentWorkoutStep}`);
+        if (newStepEl) {
+            newStepEl.classList.add('active');
+            newStepEl.scrollIntoView();
+        }
+        
+        updateWorkoutNavButtons(totalSteps);
+    }
+}
+
+/**
+ * Update workout navigation buttons
+ */
+function updateWorkoutNavButtons(totalSteps) {
+    const prevBtn = document.getElementById('modalPrevBtn');
+    const nextBtn = document.getElementById('modalNextBtn');
+    const indicator = document.getElementById('modalStepIndicator');
+    
+    prevBtn.disabled = currentWorkoutStep === 0;
+    nextBtn.disabled = currentWorkoutStep === totalSteps - 1;
+    indicator.textContent = `Step ${currentWorkoutStep + 1} of ${totalSteps}`;
+}
+
+// ==========================================
 // Event Listeners
 // ==========================================
 
@@ -423,6 +589,26 @@ function initEventListeners() {
     // Sidebar toggle
     elements.menuBtn.addEventListener('click', toggleSidebar);
     elements.overlay.addEventListener('click', closeSidebar);
+    
+    // Modal controls
+    document.getElementById('modalClose').addEventListener('click', closeWorkoutModal);
+    document.getElementById('modalOverlay').addEventListener('click', closeWorkoutModal);
+    document.getElementById('modalPrevBtn').addEventListener('click', () => navigateWorkoutStep(-1));
+    document.getElementById('modalNextBtn').addEventListener('click', () => navigateWorkoutStep(1));
+    
+    // Keyboard support for modal
+    document.addEventListener('keydown', (e) => {
+        const modal = document.getElementById('workoutModal');
+        if (modal.classList.contains('active')) {
+            if (e.key === 'Escape') {
+                closeWorkoutModal();
+            } else if (e.key === 'ArrowLeft') {
+                navigateWorkoutStep(-1);
+            } else if (e.key === 'ArrowRight') {
+                navigateWorkoutStep(1);
+            }
+        }
+    });
     
     // Handle hash changes
     window.addEventListener('hashchange', handleHashChange);
