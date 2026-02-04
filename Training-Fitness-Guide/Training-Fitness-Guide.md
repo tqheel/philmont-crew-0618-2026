@@ -179,6 +179,11 @@ Complete 2-3 rounds of:
 > 
 > 📹 **Video Demo**: [Side Plank - Howcast](https://www.youtube.com/watch?v=K2VljzCC16g)
 
+**5. Clamshells** - 15 reps per side
+> Lie on your side with knees bent and feet together. Keep your lower body still while opening your top knee upward, then close it. This targets the glute medius, which stabilizes your hips and knees during Philmont's steep descents.
+> 
+> 📹 **Video Demo**: [Clamshells - Athlean-X](https://www.youtube.com/watch?v=nqH-6x2sKYo)
+
 ---
 
 ## Phase 2: Building (February - March 2026)
@@ -404,6 +409,32 @@ This program is for individuals with some fitness background who have access to 
 - **Options**: Brisk walking, jogging, cycling, elliptical, swimming
 - **Goal**: Build aerobic base without overtraining
 
+### Core Routine (Path B - 15 minutes)
+Complete 2-3 rounds:
+
+**1. Dead Bug with Weights** - 10 reps per side
+> Hold a light dumbbell or medicine ball in one hand while performing dead bug movements.
+> 
+> 📹 **Video Demo**: [Dead Bug Exercise - Howcast](https://www.youtube.com/watch?v=I5xbsA71v1A)
+
+**2. Bird Dog with Resistance Band** - 12 reps per side
+> Loop a resistance band around your foot. As you extend your leg, the band provides additional resistance.
+
+**3. Weighted Glute Bridge** - 15 reps
+> Place a dumbbell or kettlebell on your hips during glute bridges.
+> 
+> 📹 **Video Demo**: [Glute Bridge - LIVESTRONG](https://www.youtube.com/watch?v=OUgsJ8-Vi0E)
+
+**4. Side Plank with Hip Dips** - 12 reps per side
+> In side plank, lower and raise hips to intensify the movement.
+> 
+> 📹 **Video Demo**: [Side Plank Hip Dips - Bowflex](https://www.youtube.com/watch?v=XKVeLTdQWq0)
+
+**5. Banded Clamshells** - 15 reps per side
+> Loop a resistance band around your thighs just above the knees. Lie on your side and open your top knee against band resistance. This advanced variation significantly increases glute medius activation.
+> 
+> 📹 **Video Demo**: [Banded Clamshells - Athlean-X](https://www.youtube.com/watch?v=nqH-6x2sKYo)
+
 ---
 
 ## Phase 2: Building (February - March 2026)
@@ -534,6 +565,8 @@ This program is for experienced fitness enthusiasts with full gym access who wan
 - Ab Wheel Rollouts: 10 reps
 - Pallof Press: 10 reps per side
   > 📹 **Video Demo**: [Pallof Press - Athlean-X](https://www.youtube.com/watch?v=AH_QZLm_0-s)
+- Clamshells (with resistance band): 15 reps per side
+  > 📹 **Video Demo**: [Banded Clamshells - Athlean-X](https://www.youtube.com/watch?v=nqH-6x2sKYo)
 
 ### Full Body Functional Workout
 
