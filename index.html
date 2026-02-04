@@ -82,6 +82,27 @@
     <!-- Overlay for mobile sidebar -->
     <div class="overlay" id="overlay"></div>
 
+    <!-- Workout Modal -->
+    <div class="modal" id="workoutModal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose" aria-label="Close modal">
+                ✕
+            </button>
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Workout</h2>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Workout content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn" id="modalPrevBtn" aria-label="Previous exercise">← Prev</button>
+                <span class="modal-step-indicator" id="modalStepIndicator">Step 1 of 1</span>
+                <button class="modal-btn" id="modalNextBtn" aria-label="Next exercise">Next →</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Marked.js for markdown parsing -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="app.js"></script>
