@@ -23,6 +23,7 @@ This routine is designed to build foundational core strength and stability. Focu
 * **Forearm Plank (45s):** [Watch Tutorial](https://www.youtube.com/watch?v=pvIjsGZeqas)
 * **Dead Bug (12 reps/side):** [Watch Tutorial](https://www.youtube.com/watch?v=g_BYB0R-4Ws)
 * **Modified Side Plank (30s/side):** [Watch Tutorial](https://www.youtube.com/watch?v=NXr4Fw8q60M)
+* **Clamshells (15 reps/side):** [Watch Tutorial](https://www.youtube.com/watch?v=nqH-6x2sKYo)
 
 ## 3. Circuit 2: Dynamic Strength (10 Minutes)
 *Perform 3 rounds. Rest 30 seconds between rounds.*
@@ -43,4 +44,20 @@ This routine is designed to build foundational core strength and stability. Focu
 ### Technical Notes
 * **Transverse Abdominis Activation:** Prioritize drawing the navel toward the spine during all movements to ensure deep core engagement.
 * **Spinal Alignment:** Avoid hyperextension of the neck; keep the gaze neutral to the floor during planks and bird-dogs.
+* **Glute Medius Engagement:** Clamshells target the glute medius, a critical stabilizer for hip and knee health during hiking. This muscle prevents inward knee collapse on descents.
 * **Frequency:** For optimal physiological adaptation, perform this routine 3–4 times per week with at least 24 hours of recovery between sessions.
+
+---
+
+## Exercise Details
+
+### Clamshells (Glute Medius Focus)
+Lie on your side with knees bent and feet together. Keep your lower body still while opening your top knee upward, then close it back. This isolates the glute medius, which is essential for hip stability and knee injury prevention during Philmont's steep descents.
+
+**Key Points:**
+- Keep your feet together throughout the movement
+- Move only at the hip (knee opens and closes)
+- Maintain a neutral spine; don't roll backward
+- Feel the burn on the outer hip/glute region
+
+📹 **Video Demo**: [Clamshells - Athlean-X](https://www.youtube.com/watch?v=nqH-6x2sKYo)
