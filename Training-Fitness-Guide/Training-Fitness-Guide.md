@@ -156,7 +156,8 @@ Complete 2-3 rounds of:
 > 
 > 📹 **Video Demo**: [How to Do Step Ups - ScottHermanFitness](https://www.youtube.com/watch?v=WCFCdxzFBa4)
 
-### Core Routine (15 minutes)
+### **Core** Routine (15 minutes)
+Click **Core** to open the guided routine in the workout modal.
 Complete 2-3 rounds of:
 
 **1. Dead Bug** - 10 reps per side
