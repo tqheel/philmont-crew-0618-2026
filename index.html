@@ -51,6 +51,10 @@
                     🏃
                     Training & Fitness
                 </button>
+                <button class="doc-tab" id="countdownTabBtn" data-doc="countdown">
+                    ⏰
+                    Countdown
+                </button>
             </nav>
         </header>
 
@@ -99,6 +103,41 @@
                 <button class="modal-btn" id="modalPrevBtn" aria-label="Previous exercise">← Prev</button>
                 <span class="modal-step-indicator" id="modalStepIndicator">Step 1 of 1</span>
                 <button class="modal-btn" id="modalNextBtn" aria-label="Next exercise">Next →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Countdown Modal -->
+    <div class="modal" id="countdownModal">
+        <div class="modal-overlay" id="countdownModalOverlay"></div>
+        <div class="modal-content countdown-modal-content">
+            <button class="modal-close" id="countdownModalClose" aria-label="Close countdown">
+                ✕
+            </button>
+            <div class="modal-header">
+                <h2 class="modal-title">📍 The Adventure Awaits</h2>
+                <p class="countdown-subtitle">Philmont Crew 618 - June 18, 2026</p>
+            </div>
+            <div class="countdown-container">
+                <div class="countdown-unit">
+                    <div class="countdown-value" id="countdownDays">0</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-divider">:</div>
+                <div class="countdown-unit">
+                    <div class="countdown-value" id="countdownHours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-divider">:</div>
+                <div class="countdown-unit">
+                    <div class="countdown-value" id="countdownMinutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-divider">:</div>
+                <div class="countdown-unit">
+                    <div class="countdown-value" id="countdownSeconds">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
             </div>
         </div>
     </div>

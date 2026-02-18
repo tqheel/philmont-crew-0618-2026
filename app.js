@@ -40,7 +40,11 @@ const state = {
     currentDoc: 'home',
     currentSectionIndex: 0,
     documents: {},
-    sections: {}
+    sections: {},
+    countdown: {
+        intervalId: null,
+        isRunning: false
+    }
 };
 
 // ==========================================
@@ -57,7 +61,13 @@ const elements = {
     prevBtn: document.getElementById('prevBtn'),
     nextBtn: document.getElementById('nextBtn'),
     pageIndicator: document.getElementById('pageIndicator'),
-    navFooter: document.getElementById('navFooter')
+    navFooter: document.getElementById('navFooter'),
+    countdownTabBtn: document.getElementById('countdownTabBtn'),
+    countdownModal: document.getElementById('countdownModal'),
+    countdownDays: document.getElementById('countdownDays'),
+    countdownHours: document.getElementById('countdownHours'),
+    countdownMinutes: document.getElementById('countdownMinutes'),
+    countdownSeconds: document.getElementById('countdownSeconds')
 };
 
 // ==========================================
@@ -559,6 +569,123 @@ function updateWorkoutNavButtons(totalSteps) {
 }
 
 // ==========================================
+// Countdown Modal Functions
+// ==========================================
+
+const ADVENTURE_DATE = new Date(2026, 5, 18, 0, 0, 0, 0); // June 18, 2026 - 12:00 AM
+
+/**
+ * Calculate time remaining until adventure date
+ */
+function calculateCountdown() {
+    const now = new Date();
+    const diff = ADVENTURE_DATE - now;
+    
+    if (diff <= 0) {
+        return {
+            days: 0,
+            hours: 0,
+            minutes: 0,
+            seconds: 0,
+            isComplete: true
+        };
+    }
+    
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    
+    return {
+        days,
+        hours,
+        minutes,
+        seconds,
+        isComplete: false
+    };
+}
+
+/**
+ * Format time component with zero padding
+ */
+function formatTimeComponent(value, padLength = 2) {
+    return String(value).padStart(padLength, '0');
+}
+
+/**
+ * Update countdown display in modal
+ */
+function updateCountdownDisplay() {
+    const countdown = calculateCountdown();
+    
+    elements.countdownDays.textContent = formatTimeComponent(countdown.days, 1);
+    elements.countdownHours.textContent = formatTimeComponent(countdown.hours);
+    elements.countdownMinutes.textContent = formatTimeComponent(countdown.minutes);
+    elements.countdownSeconds.textContent = formatTimeComponent(countdown.seconds);
+    
+    // Add special styling if countdown is complete
+    if (countdown.isComplete) {
+        elements.countdownModal.classList.add('countdown-complete');
+    } else {
+        elements.countdownModal.classList.remove('countdown-complete');
+    }
+}
+
+/**
+ * Start countdown timer updates
+ */
+function startCountdownTimer() {
+    // Update immediately
+    updateCountdownDisplay();
+    
+    // Set up interval to update every second
+    if (state.countdown.intervalId) {
+        clearInterval(state.countdown.intervalId);
+    }
+    
+    state.countdown.intervalId = setInterval(() => {
+        updateCountdownDisplay();
+    }, 1000);
+    
+    state.countdown.isRunning = true;
+}
+
+/**
+ * Stop countdown timer
+ */
+function stopCountdownTimer() {
+    if (state.countdown.intervalId) {
+        clearInterval(state.countdown.intervalId);
+        state.countdown.intervalId = null;
+    }
+    state.countdown.isRunning = false;
+}
+
+/**
+ * Open countdown modal
+ */
+function openCountdownModal() {
+    // Update tab state to show countdown as active
+    const tabs = elements.docTabs.querySelectorAll('.doc-tab');
+    tabs.forEach(tab => {
+        tab.classList.toggle('active', tab.dataset.doc === 'countdown');
+    });
+    
+    elements.countdownModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    startCountdownTimer();
+}
+
+/**
+ * Close countdown modal
+ */
+function closeCountdownModal() {
+    elements.countdownModal.classList.remove('active');
+    document.body.style.overflow = '';
+    stopCountdownTimer();
+}
+
+// ==========================================
 // Event Listeners
 // ==========================================
 
@@ -567,7 +694,13 @@ function initEventListeners() {
     elements.docTabs.addEventListener('click', (e) => {
         const tab = e.target.closest('.doc-tab');
         if (tab) {
-            switchDocument(tab.dataset.doc);
+            const docKey = tab.dataset.doc;
+            // Handle countdown tab specially
+            if (docKey === 'countdown') {
+                openCountdownModal();
+            } else {
+                switchDocument(docKey);
+            }
         }
     });
     
@@ -596,16 +729,26 @@ function initEventListeners() {
     document.getElementById('modalPrevBtn').addEventListener('click', () => navigateWorkoutStep(-1));
     document.getElementById('modalNextBtn').addEventListener('click', () => navigateWorkoutStep(1));
     
+    // Countdown modal controls
+    document.getElementById('countdownModalClose').addEventListener('click', closeCountdownModal);
+    document.getElementById('countdownModalOverlay').addEventListener('click', closeCountdownModal);
+    
     // Keyboard support for modal
     document.addEventListener('keydown', (e) => {
-        const modal = document.getElementById('workoutModal');
-        if (modal.classList.contains('active')) {
+        const workoutModal = document.getElementById('workoutModal');
+        const countdownModal = document.getElementById('countdownModal');
+        
+        if (workoutModal.classList.contains('active')) {
             if (e.key === 'Escape') {
                 closeWorkoutModal();
             } else if (e.key === 'ArrowLeft') {
                 navigateWorkoutStep(-1);
             } else if (e.key === 'ArrowRight') {
                 navigateWorkoutStep(1);
+            }
+        } else if (countdownModal.classList.contains('active')) {
+            if (e.key === 'Escape') {
+                closeCountdownModal();
             }
         }
     });
